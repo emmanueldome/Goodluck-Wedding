@@ -1,14 +1,17 @@
-:root {
+:root{
 
-  --chocolate-dark: #3b1f18;
-  --mocha-brown: #6b4637;
-  --burnt-orange: #d96a1d;
-  --soft-orange: #f08a32;
-  --cream: #f5eedc;
-  --gold: #c9a66b;
+  --navy-dark:#1E224F;
+  --navy:#3A4572;
 
-  --shadow-soft: rgba(0,0,0,0.12);
-  --shadow-strong: rgba(0,0,0,0.25);
+  --coral:#E4876A;
+  --blush:#F1B6A8;
+
+  --ivory:#F5E3DC;
+  --white:#FFFFFF;
+
+  --shadow-soft:rgba(0,0,0,.12);
+  --shadow-strong:rgba(0,0,0,.25);
+
 }
 
 * {
