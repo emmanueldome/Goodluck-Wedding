@@ -3,8 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Wedding Reception</title>
 
@@ -12,106 +11,236 @@ content="width=device-width, initial-scale=1">
 
 <style>
 
-body{
+:root{
 
-font-family:'Playfair Display',serif;
+  --navy-dark:#1E224F;
+  --navy:#3A4572;
 
-background:#f6f6f6;
+  --coral:#E4876A;
+  --blush:#F1B6A8;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-min-height:100vh;
-
-padding:20px;
+  --ivory:#F5E3DC;
+  --white:#FFFFFF;
 
 }
+
+/* ================= BODY ================= */
+
+body{
+
+  font-family:'Playfair Display',serif;
+
+  background:
+  linear-gradient(
+    rgba(30,34,79,.88),
+    rgba(58,69,114,.88)
+  );
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  min-height:100vh;
+
+  padding:20px;
+
+  margin:0;
+
+}
+
+/* ================= CONTAINER ================= */
 
 .container{
 
-background:white;
+  background:rgba(255,255,255,.98);
 
-padding:30px;
+  padding:35px;
 
-width:100%;
+  width:100%;
 
-max-width:500px;
+  max-width:550px;
 
-border-radius:25px;
+  border-radius:25px;
 
-box-shadow:
-0 10px 25px rgba(
-0,0,0,.1
-);
+  border:2px solid var(--blush);
 
-text-align:center;
+  box-shadow:
+  0 15px 35px rgba(0,0,0,.15);
+
+  text-align:center;
 
 }
+
+/* ================= TITLES ================= */
 
 h1{
 
-color:#9CAF88;
+  color:var(--navy-dark);
+
+  margin-bottom:10px;
+
+  letter-spacing:1px;
 
 }
+
+h1::after{
+
+  content:"";
+
+  display:block;
+
+  width:80px;
+
+  height:3px;
+
+  margin:12px auto 0;
+
+  border-radius:50px;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--coral),
+    var(--blush)
+  );
+
+}
+
+p{
+
+  color:#555;
+
+}
+
+/* ================= INPUT ================= */
 
 input{
 
-width:100%;
+  width:100%;
 
-padding:14px;
+  padding:14px;
 
-border-radius:15px;
+  border-radius:15px;
 
-border:1px solid #ddd;
+  border:1px solid var(--blush);
 
-margin-top:20px;
+  margin-top:20px;
 
-font-size:1rem;
+  font-size:1rem;
+
+  box-sizing:border-box;
 
 }
+
+input:focus{
+
+  outline:none;
+
+  border-color:var(--coral);
+
+  box-shadow:
+  0 0 0 4px rgba(228,135,106,.18);
+
+}
+
+/* ================= BUTTON ================= */
 
 button{
 
-width:100%;
+  width:100%;
 
-padding:15px;
+  padding:15px;
 
-margin-top:15px;
+  margin-top:15px;
 
-border:none;
+  border:none;
 
-border-radius:30px;
+  border-radius:30px;
 
-font-size:1rem;
+  font-size:1rem;
 
-font-weight:bold;
+  font-weight:bold;
 
-cursor:pointer;
+  cursor:pointer;
 
-background:linear-gradient(
-135deg,
-#9CAF88,
-#D4AF37
-);
+  color:white;
 
-color:white;
+  background:
+  linear-gradient(
+    135deg,
+    var(--navy-dark),
+    var(--navy)
+  );
+
+  transition:.3s;
 
 }
 
+button:hover{
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--coral),
+    var(--blush)
+  );
+
+  transform:translateY(-2px);
+
+}
+
+/* ================= RESULTS ================= */
+
 #results{
 
-margin-top:20px;
+  margin-top:20px;
 
-padding:15px;
+  padding:15px;
 
-background:#f7f7f7;
+  background:
+  linear-gradient(
+    135deg,
+    #fff9f8,
+    #ffffff
+  );
 
-border-radius:15px;
+  border:1px solid var(--blush);
 
-text-align:left;
+  border-radius:15px;
+
+  text-align:left;
+
+}
+
+/* ================= RECEPTION PANEL ================= */
+
+#receptionPanel{
+
+  display:none;
+
+}
+
+.total-count{
+
+  color:var(--navy-dark);
+
+  font-size:1.1rem;
+
+  margin-top:10px;
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+.container{
+
+padding:25px;
+
+}
 
 }
 
@@ -121,7 +250,7 @@ text-align:left;
 
 <body>
 
-<!-- PASSWORD SCREEN -->
+<!-- LOGIN SCREEN -->
 
 <div id="loginBox" class="container">
 
@@ -142,21 +271,15 @@ placeholder="Password">
 
 </div>
 
-
 <!-- RECEPTION PANEL -->
 
 <div
 id="receptionPanel"
-class="container"
-style="display:none;">
+class="container">
 
-<h1>
-Wedding Reception
-</h1>
+<h1>Wedding Reception</h1>
 
-<p>
-Confirm Guest Entry
-</p>
+<p>Confirm Guest Entry</p>
 
 <input
 list="guestList"
@@ -171,13 +294,11 @@ placeholder="Search guest name">
 
 </datalist>
 
-
 <button onclick="confirmEntry()">
 
 ✅ Confirm Entry
 
 </button>
-
 
 <button onclick="viewEntries()">
 
@@ -185,22 +306,18 @@ placeholder="Search guest name">
 
 </button>
 
-
 <div id="results"></div>
 
 </div>
 
-
 <script>
-  
-  function loginReception(){
+
+function loginReception(){
 
 const password =
-
 document.getElementById(
 "receptionPassword"
 ).value;
-
 
 if(password==="2406"){
 
@@ -208,13 +325,11 @@ document.getElementById(
 "loginBox"
 ).style.display="none";
 
-
 document.getElementById(
 "receptionPanel"
 ).style.display="block";
 
-}
-else{
+}else{
 
 alert(
 "Wrong password ❌"
@@ -227,7 +342,6 @@ alert(
 function confirmEntry(){
 
 const guest=
-
 document.getElementById(
 "guestName"
 ).value.trim();
@@ -250,7 +364,6 @@ localStorage.getItem(
 )
 )||[];
 
-
 const exists=
 
 entries.some(
@@ -270,17 +383,14 @@ return;
 
 }
 
-
 entries.push({
 
 guest:guest,
 
-time:
-new Date()
+time:new Date()
 .toLocaleTimeString()
 
 });
-
 
 localStorage.setItem(
 
@@ -296,10 +406,13 @@ alert(
 "Entry confirmed ✅"
 );
 
+document.getElementById(
+"guestName"
+).value="";
+
 viewEntries();
 
 }
-
 
 function viewEntries(){
 
@@ -311,33 +424,35 @@ localStorage.getItem(
 )
 )||[];
 
-
 let html=
-"<h3>Checked Guests</h3>";
+"<h3 style='color:#1E224F;'>Checked Guests</h3>";
 
 entries.forEach(
 (e,index)=>{
 
 html+=`
 
-${index+1}.
+<b>${index+1}.</b>
 ${e.guest}
 
-(${e.time})
+<br>
 
-<br><br>
+<small>
+${e.time}
+</small>
+
+<hr>
 
 `;
 
 });
 
-
 html+=
-`<hr>
-<b>Total:
-${entries.length}
-</b>`;
 
+`<div class="total-count">
+Total Guests:
+<b>${entries.length}</b>
+</div>`;
 
 document.getElementById(
 "results"
